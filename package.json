@@ -1,0 +1,12 @@
+{
+  "name": "blackjack",
+  "version": "0.0.0",
+  "description": "A simple blackjack game built with Redux",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Thomas Marek",
+  "license": "MIT"
+}
