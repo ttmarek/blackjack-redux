@@ -17,6 +17,10 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: default;
+}
+
 .container {
   display: flex;
   justify-content: center;
