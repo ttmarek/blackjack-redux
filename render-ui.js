@@ -12,7 +12,13 @@ function renderUI(deckId, drawnCards, count) {
   }
   if (count !== undefined) {
     const countContainer = document.getElementById('count');
+    const hitMeBtn = document.getElementById('hit-me-btn');
+
     countContainer.textContent = count;
+
+    if (count > 21) {
+      hitMeBtn.disabled = true;
+    }
   }
 }
 

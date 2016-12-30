@@ -90,7 +90,7 @@ describe('renderUI(deckId, drawnCard, count)', () => {
     });
   });
 
-  describe('When there are drawn cards', () => {
+  describe('When a hand count is defined', () => {
     it('displays the total count', () => {
       // setup
       const count = 20;
@@ -101,6 +101,20 @@ describe('renderUI(deckId, drawnCard, count)', () => {
       // assert
       const countContainer = document.getElementById('count');
       expect(countContainer.textContent).toEqual('20');
+    });
+
+    describe('When the hand count is greater than 31', () => {
+      it('disables the hit-me button', () => {
+        // setup
+        const deckId = 'lksd9023u';
+        const count = 22;
+
+        // test
+        renderUI(deckId, undefined, count);
+
+        const btn = document.getElementById('hit-me-btn');
+        expect(btn.disabled).toBe(true);
+      });
     });
   });
 });
