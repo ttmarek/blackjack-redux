@@ -1,7 +1,11 @@
 const GET_DECK_SUCCESS = 'GET_DECK_SUCCESS';
 const DRAW_CARD_SUCCESS = 'DRAW_CARD_SUCCESS';
+const FACE_CARDS = ['KING', 'JACK', 'QUEEN'];
+const ACE = 'ACE';
 
 module.exports = {
   GET_DECK_SUCCESS,
   DRAW_CARD_SUCCESS,
+  FACE_CARDS,
+  ACE,
 };

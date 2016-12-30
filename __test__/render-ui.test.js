@@ -1,8 +1,8 @@
 const {
-  render,
-} = require('../render');
+  renderUI,
+} = require('../render-ui');
 
-describe('render(state)', () => {
+describe('renderUI(deckId, drawnCard, count)', () => {
   beforeEach(() => {
     document.body.innerHTML =
       `<div id="messages"></div>
@@ -20,12 +20,10 @@ describe('render(state)', () => {
   describe('When the deckId is defined', () => {
     it('the hit-me button is enabled', () => {
       // setup
-      const state = {
-        deckId: '239dkfkj93',
-      };
+      const deckId = '239dkfkj93';
 
       // test
-      render(state);
+      renderUI(deckId);
 
       // assert
       const btn = document.getElementById('hit-me-btn');
@@ -34,12 +32,10 @@ describe('render(state)', () => {
 
     it('the deck Id. is displayed in the messages bar', () => {
       // setup
-      const state = {
-        deckId: '239dkfkj93',
-      };
+      const deckId = '239dkfkj93';
 
       // test
-      render(state);
+      renderUI(deckId);
 
       // assert
       const messages = document.getElementById('messages');
@@ -50,17 +46,15 @@ describe('render(state)', () => {
   describe('When there is one drawn card', () => {
     it('displays the drawn card', () => {
       // setup
-      const state = {
-        drawnCards: [{
+      const drawnCards = [{
           "image": "https://deckofcardsapi.com/static/img/KH.png",
           "value": "KING",
           "suit": "HEARTS",
           "code": "KH"
-        }],
-      };
+      }];
 
       // test
-      render(state);
+      renderUI(undefined, drawnCards);
 
       // assert
       const hand = document.getElementById('hand');
@@ -71,8 +65,7 @@ describe('render(state)', () => {
   describe('When there are multiple drawn cards', () => {
     it('displays all drawn cards in the order that they were drawn', () => {
       // setup
-      const state = {
-        drawnCards: [
+      const drawnCards = [
           {
             "image": "https://deckofcardsapi.com/static/img/KH.png",
             "value": "KING",
@@ -85,16 +78,29 @@ describe('render(state)', () => {
             "suit": "CLUBS",
             "code": "8C"
           }
-        ],
-      };
+      ];
 
       // test
-      render(state);
+      renderUI(undefined, drawnCards);
 
       // assert
       const hand = document.getElementById('hand');
       expect(hand.innerHTML.includes('<img src="https://deckofcardsapi.com/static/img/KH.png">')).toBe(true);
       expect(hand.innerHTML.includes('<img src="https://deckofcardsapi.com/static/img/8C.png">')).toBe(true);
+    });
+  });
+
+  describe('When there are drawn cards', () => {
+    it('displays the total count', () => {
+      // setup
+      const count = 20;
+
+      // test
+      renderUI(undefined, undefined, count);
+
+      // assert
+      const countContainer = document.getElementById('count');
+      expect(countContainer.textContent).toEqual('20');
     });
   });
 });
