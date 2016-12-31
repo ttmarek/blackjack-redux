@@ -1,19 +1,14 @@
 const Redux = require('redux');
-const { reducer } = require('./reducer');
-const { renderUI } = require('./render-ui');
-const {
-  getDeck,
-  drawCard,
-} = require('./actions');
-const { countSelector } = require('./selectors');
+
+const { getDeck, drawCard } = require('./app/actions');
+const { reducer } = require('./app/reducer');
+const { countSelector } = require('./app/selectors');
+const { renderUI } = require('./app/render-ui');
 
 const store = Redux.createStore(reducer);
 
 store.subscribe(() => {
-  const {
-    deckId,
-    drawnCards,
-  } = store.getState();
+  const { deckId, drawnCards } = store.getState();
 
   const count = countSelector(drawnCards);
 

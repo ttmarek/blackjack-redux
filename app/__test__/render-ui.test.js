@@ -115,6 +115,18 @@ describe('renderUI(deckId, drawnCard, count)', () => {
         const btn = document.getElementById('hit-me-btn');
         expect(btn.disabled).toBe(true);
       });
+
+      it('displays "BUST!" in the message bar', () => {
+        // setup
+        const deckId = 'lksd9023u';
+        const count = 22;
+
+        // test
+        renderUI(deckId, undefined, count);
+
+        const messages = document.getElementById('messages');
+        expect(messages.innerHTML.includes('BUST!')).toBe(true);
+      });
     });
   });
 });

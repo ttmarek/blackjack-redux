@@ -63,13 +63,10 @@ describe('Action: drawCard(dispatch)', () => {
           expect(dispatch).toHaveBeenCalledWith({
             type: 'DRAW_CARD_SUCCESS',
             payload: {
-              card: {
-                "image": "https://deckofcardsapi.com/static/img/KH.png",
-                "value": "KING",
-                "suit": "HEARTS",
-                "code": "KH"
-              },
-              cardsRemainingInDeck: 50,
+              "image": "https://deckofcardsapi.com/static/img/KH.png",
+              "value": "KING",
+              "suit": "HEARTS",
+              "code": "KH"
             },
           });
         });

@@ -17,10 +17,7 @@ function drawCard(dispatch, deckId) {
     .then(response => {
       dispatch({
         type: 'DRAW_CARD_SUCCESS',
-        payload: {
-          card: response.cards[0],
-          cardsRemainingInDeck: response.remaining,
-        },
+        payload: response.cards[0],
       });
     });
 }

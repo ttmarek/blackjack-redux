@@ -27,18 +27,14 @@ describe('reducer(state, action)', () => {
       const action = {
         type: DRAW_CARD_SUCCESS,
         payload: {
-          card: {
-            "image": "https://deckofcardsapi.com/static/img/KH.png",
-            "value": "KING",
-            "suit": "HEARTS",
-            "code": "KH"
-          },
-          cardsRemainingInDeck: 51,
+          "image": "https://deckofcardsapi.com/static/img/KH.png",
+          "value": "KING",
+          "suit": "HEARTS",
+          "code": "KH"
         },
       };
       const state = {
         drawnCards: [],
-        cardsRemainingInDeck: undefined,
       };
 
       const newState = reducer(state, action);
@@ -51,23 +47,16 @@ describe('reducer(state, action)', () => {
           "code": "KH"
         }]);
       });
-
-      it('updates the value of the cardsRemainingInDeck state property', () => {
-        expect(newState.cardsRemainingInDeck).toBe(51);
-      });
     });
 
-    describe('When there are already a drawn card', () => {
+    describe('When there are already drawn cards', () => {
       const action = {
         type: DRAW_CARD_SUCCESS,
         payload: {
-          card: {
-            "image": "https://deckofcardsapi.com/static/img/KH.png",
-            "value": "KING",
-            "suit": "HEARTS",
-            "code": "KH"
-          },
-          cardsRemainingInDeck: 51,
+          "image": "https://deckofcardsapi.com/static/img/KH.png",
+          "value": "KING",
+          "suit": "HEARTS",
+          "code": "KH"
         },
       };
       const state = {
@@ -77,7 +66,6 @@ describe('reducer(state, action)', () => {
           "suit": "HEARTS",
           "code": "KH"
         }],
-        cardsRemainingInDeck: undefined,
       };
 
       const newState = reducer(state, action);

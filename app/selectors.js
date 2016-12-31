@@ -10,11 +10,7 @@ function countSelector(drawnCards) {
         return 10;
       }
       if (card.value === ACE) {
-        const countA = count + 11;
-        if (countA > 21) {
-          return 1;
-        }
-        return 11;
+        return count + 11 > 21 ? 1 : 11;
       }
       return parseInt(card.value);
     })();
